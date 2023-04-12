@@ -7,7 +7,7 @@ Purpose: This program creates a Binary Search Tree ADT
 #ifndef BINTREE_BINTREE_H
 #define BINTREE_BINTREE_H
 
-#include "data.h";
+#include "data.h"
 
 class BinTree{
     public:
