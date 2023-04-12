@@ -17,9 +17,6 @@ class BinTree{
     public:
         BinTree();
         ~BinTree();
-        //Temporary constructor
-        BinTree(int[], string[]);
-
         bool isEmpty();
         int getCount();
         bool getRootData(Data*);
