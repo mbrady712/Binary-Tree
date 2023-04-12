@@ -115,7 +115,7 @@ int BinTree::getHeight(){
 };
 
 void BinTree::displayPreOrder(){
-
+    displayPreOrder(root);
 };
 
 void BinTree::displayPostOrder(){
@@ -152,6 +152,18 @@ int BinTree::getHeight(DataNode* node){
 };
 
 void BinTree::displayPreOrder(DataNode* temproot){
+
+    if (temproot) {
+        cout << temproot->data.id << " " << temproot->data.information << endl;
+        if (temproot->left) {
+            displayPreOrder(temproot->left);
+        }
+        if (temproot->right) {
+            displayPreOrder(temproot->right);
+        }
+    }
+
+    return;
 
 };
 
