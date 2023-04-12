@@ -8,11 +8,18 @@ Purpose: This program creates a Binary Search Tree ADT
 #define BINTREE_BINTREE_H
 
 #include "data.h"
+#include <iostream>
+
+using std::cout;
+using std::endl;
 
 class BinTree{
     public:
         BinTree();
         ~BinTree();
+        //Temporary constructor
+        BinTree(int[], string[]);
+
         bool isEmpty();
         int getCount();
         bool getRootData(Data*);
