@@ -72,7 +72,11 @@ bool BinTree::removeNode(int id){
 };
 
 bool BinTree::getNode(Data* data, int id){
-    return true;
+    bool retrieved = false;
+    if(id > 0){
+        retrieved = getNode(data, id, root);
+    }
+    return retrieved;
 };
 
 bool BinTree::contains(int id){
@@ -122,8 +126,21 @@ DataNode* BinTree::removeNode(int id, DataNode* node){
     return node;
 };
 
-bool BinTree::getNode(Data* data, int id, DataNode* node){
-    return true;
+bool BinTree::getNode(Data* data, int id, DataNode* temproot){
+    bool retrieved = false;
+    if(temproot){
+        if(temproot->data.id == id){
+            data->id = temproot->data.id;
+            data->information = temproot->data.information;
+            retrieved = true;
+        }else if(id < temproot->data.id){
+            retrieved = getNode(data, id, temproot->left);
+        }
+        else if(id > temproot->data.id){
+            retrieved = getNode(data, id, temproot->right);
+        }
+    }
+    return retrieved;
 };
 
 bool BinTree::contains(int id, DataNode* temproot){
