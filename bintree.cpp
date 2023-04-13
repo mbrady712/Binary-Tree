@@ -46,7 +46,9 @@ void BinTree::displayTree(){
 //Public methods with private overloads
 
 void BinTree::clear(){
-
+    clear(root);
+    root = NULL;
+    count = 0;
 };
 
 bool BinTree::addNode(int id, const string* information){
@@ -104,8 +106,16 @@ void BinTree::displayInOrder(){
 };
 
 //Overloads of public methods
-void BinTree::clear(DataNode* node){
-
+void BinTree::clear(DataNode* temproot){
+    
+    if(temproot){
+        clear(temproot->left);
+        clear(temproot->right);
+        temproot->left = NULL;
+        temproot->right = NULL;
+        delete temproot;
+    }
+    return;
 };
 
 bool BinTree::addNode(DataNode* newNode, DataNode** root){
