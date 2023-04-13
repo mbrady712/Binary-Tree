@@ -28,9 +28,19 @@ bool BinTree::getRootData(Data* data){
 };
 
 void BinTree::displayTree(){
+    cout << "DISPLAY TREE" << endl;
+    cout << "==============================================" << endl;
+    cout << endl;
+    cout << "Pre-Order Traversal" << endl;
     displayPreOrder();
+    cout << endl;
+    cout << "In-Order Traversal" << endl;
     displayInOrder();
+    cout << endl;
+    cout << "Post-Order Traversal" << endl;
     displayPostOrder();
+    cout << endl;
+    cout << "==============================================" << endl;
 };
 
 //Public methods with private overloads
