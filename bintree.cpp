@@ -76,7 +76,11 @@ bool BinTree::getNode(Data* data, int id){
 };
 
 bool BinTree::contains(int id){
-    return true;
+    bool inTree = false;
+    if(id > 0){
+        inTree = contains(id, root); 
+    }
+    return inTree;
 };
 
 int BinTree::getHeight(){
@@ -122,8 +126,19 @@ bool BinTree::getNode(Data* data, int id, DataNode* node){
     return true;
 };
 
-bool BinTree::contains(int id, DataNode* node){
-    return true;
+bool BinTree::contains(int id, DataNode* temproot){
+    bool inTree = false;
+    if(temproot){
+        if(temproot->data.id == id){
+            inTree = true;
+        }else if(id < temproot->data.id){
+            inTree = contains(id, temproot->left);
+        }
+        else if(id > temproot->data.id){
+            inTree = contains(id, temproot->right);
+        }
+    }
+    return inTree;
 };
 
 int BinTree::getHeight(DataNode* node){
