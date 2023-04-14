@@ -45,6 +45,9 @@ class BinTree{
         void displayPreOrder(DataNode*);
         void displayPostOrder(DataNode*);
         void displayInOrder(DataNode*);
+        //Purely private methods
+        DataNode* minValueNode(DataNode*);
+
 };
 
 #endif /* BINTREE_BINTREE_H */

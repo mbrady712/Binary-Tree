@@ -70,7 +70,13 @@ bool BinTree::addNode(int id, const string* information){
 };
 
 bool BinTree::removeNode(int id){
-    return true;
+    bool removed = false;
+    int tempcount = count;
+    root = removeNode(id, root);
+    if(count < tempcount){
+        removed = true;
+    }
+    return removed;
 };
 
 bool BinTree::getNode(Data* data, int id){
@@ -132,8 +138,33 @@ bool BinTree::addNode(DataNode* newNode, DataNode** root){
     return added;
 };
 
-DataNode* BinTree::removeNode(int id, DataNode* node){
-    return node;
+DataNode* BinTree::removeNode(int id, DataNode* temproot){
+    if(temproot){
+        if(id < temproot->data.id){
+            temproot->left = removeNode(id, temproot->left);
+        }else if(id > temproot->data.id){
+            temproot->right = removeNode(id, temproot->right);
+        }else{
+            DataNode *temp = new DataNode;
+            if(temproot->left == NULL){
+                temp = temproot->right;
+                delete temproot;
+                temproot = temp;
+                count--;
+            }else if(temproot->right == NULL){
+                temp = temproot->left;
+                delete temproot;
+                temproot = temp;
+                count--;
+            }else{
+                temp = minValueNode(temproot->right);
+                temproot->data.id = temp->data.id;
+                temproot->data.information = temp->data.information;
+                temproot->right = removeNode(temp->data.id, temproot->right);
+            }
+        }
+    }
+    return temproot;
 };
 
 bool BinTree::getNode(Data* data, int id, DataNode* temproot){
@@ -226,3 +257,11 @@ void BinTree::displayInOrder(DataNode* temproot){
 
     return;
 };
+
+DataNode* BinTree::minValueNode(DataNode* node) {
+    DataNode* current = node;
+    while (current && current->left != NULL) {
+        current = current->left;
+    }
+    return current;
+}
