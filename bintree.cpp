@@ -16,15 +16,24 @@ BinTree::~BinTree(){
 }
 
 bool BinTree::isEmpty(){
-    return true;
+    return root == NULL;
 }
 
 int BinTree::getCount(){
-    return 0;
+    return count;
 }
 
 bool BinTree::getRootData(Data* data){
-    return true;
+    bool rootRetrieved = false;
+    if(root){
+        data->id = root->data.id;
+        data->information = root->data.information;
+        rootRetrieved = true;
+    }else{
+        data->id = -1;
+        data->information = "";
+    }
+    return rootRetrieved;
 };
 
 void BinTree::displayTree(){
