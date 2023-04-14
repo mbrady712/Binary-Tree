@@ -90,7 +90,7 @@ bool BinTree::contains(int id){
 };
 
 int BinTree::getHeight(){
-    return 0;
+    return getHeight(root);
 };
 
 void BinTree::displayPreOrder(){
@@ -168,8 +168,16 @@ bool BinTree::contains(int id, DataNode* temproot){
     return inTree;
 };
 
-int BinTree::getHeight(DataNode* node){
-    return 0;
+int BinTree::getHeight(DataNode* temproot){
+    int lh = 0;
+    int rh = 0;
+    int height = 0;
+    if(temproot){
+        lh = getHeight(temproot->left);
+        rh = getHeight(temproot->right);
+        height = ((lh<rh)?rh:lh) + 1;
+    }
+    return height;
 };
 
 void BinTree::displayPreOrder(DataNode* temproot){
