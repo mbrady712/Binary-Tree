@@ -55,8 +55,8 @@ void BinTree::displayTree(){
     cout << endl;
     cout << "Post-Order Traversal" << endl;
     displayPostOrder();
-    cout << endl;
     cout << "==============================================" << endl;
+    cout << endl;
 };
 
 //Public methods with private overloads
