@@ -140,16 +140,16 @@ void BinTree::clear(DataNode* temproot){
     return;
 };
 
-bool BinTree::addNode(DataNode* newNode, DataNode** root){
+bool BinTree::addNode(DataNode* newNode, DataNode** temproot){
     bool added = false;
-    if(!(*root)){
-        *root = newNode;
+    if(!(*temproot)){
+        *temproot = newNode;
         added = true;
     }
-    else if(newNode->data.id < (*root)->data.id){
-        added = addNode(newNode, &(*root)->left);
-    }else if(newNode->data.id > (*root)->data.id){
-        added = addNode(newNode, &(*root)->right);
+    else if(newNode->data.id < (*temproot)->data.id){
+        added = addNode(newNode, &(*temproot)->left);
+    }else if(newNode->data.id > (*temproot)->data.id){
+        added = addNode(newNode, &(*temproot)->right);
     }
     return added;
 };
