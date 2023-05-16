@@ -6,4 +6,4 @@
 !*.cpp
 !*.h
 !.gitignore
-!.md
+!*.md
